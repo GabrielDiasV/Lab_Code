@@ -176,6 +176,6 @@ int q7(int n){
 }
 
 
-int main(){
-
+int main(){  
+    
 }
