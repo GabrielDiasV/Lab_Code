@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<time.h>
+#include<string.h>
 
 
 void q1(int n){
@@ -176,6 +177,65 @@ int q7(int n){
 }
 
 
-int main(){  
+int calc_avg_grade(){
+
+    float *gptr;
+    int size, count=0;
+    float sum=0;
+
+    do {
+        printf("Insert the number of grades that will me inserted: ");
+        scanf("%d", &size);
+        gptr = (float *)malloc(sizeof(float) * size);
+    }while(!gptr);
+
+    for(int i=0; i<size; i++){
+        printf("Insert the grade %d: ", i);
+        scanf("%f", &gptr[i]);
+        sum+=gptr[i];
+    } 
+
+    printf("The avg is: %.2f", (sum/(float)size));
+
+    free(gptr);
+
+    return 0;
+}
+
+
+int write_file(){
+
+    FILE *fileptr;
+    char in_text[20], out_text[20];
+    fileptr = fopen("file_check.txt", "w");
+
+    if(!fileptr){
+        printf("Error loading the file");
+        return 1;
+    }
+
+    printf("Insert which word you wanna add to the file: ");
+    scanf("%s", in_text);
+    fputs(in_text, fileptr);
+    fclose(fileptr);
+
+    fileptr = fopen("file_check.txt", "r");
+
+    fgets(out_text, 19, fileptr);
+ 
+    fclose(fileptr);
     
+    if(strcmp(out_text, in_text) == 0){
+        printf("correctly working ");
+    }
+    else{
+        printf("incorrectly working");
+    }
+
+    return 0;
+} 
+
+
+int main(){
+
 }
